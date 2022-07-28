@@ -36,19 +36,19 @@ const OrderDelivery = () => {
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude
             });
+
+            const foregroundSubscription = Location.watchPositionAsync({
+                accuracy: Location.Accuracy.High,
+                distanceInterval: 100,
+            }, (updatedLocation) => {
+                setDriverLocation({
+                    latitude: updatedLocation.coords.latitude,
+                    longitude: updatedLocation.coords.longitude
+                })
+            });
+    
+            return foregroundSubscription;
         })();
-
-        const foregroundSubscription = Location.watchPositionAsync({
-            accuracy: Location.Accuracy.High,
-            distanceInterval: 100,
-        }, (updatedLocation) => {
-            setDriverLocation({
-                latitude: updatedLocation.coords.latitude,
-                longitude: updatedLocation.coords.longitude
-            })
-        });
-
-        return foregroundSubscription;
     }, [])
 
     if (!driverLocation) {
@@ -85,7 +85,6 @@ const OrderDelivery = () => {
                     }}
                 />
                 <Marker
-                    key={order.id}
                     title={order.Restaurant.name}
                     description={order.Restaurant.address}
                     coordinate={{
@@ -99,7 +98,6 @@ const OrderDelivery = () => {
                 </Marker>
 
                 <Marker
-                    key={order.id}
                     title={order.User.name}
                     description={order.User.address}
                     coordinate={{
@@ -114,14 +112,14 @@ const OrderDelivery = () => {
             </MapView>
             <BottomSheet ref={bottomSheetRef} snapPoints={snapPoints} handleIndicatorStyle={styles.handlerIndicator}>
                 <View style={styles.handlerIndicatorContainer}>
-                    <Text style={styles.routeDetailsText}>{totalMinutes.toFixed(1)} min</Text>
+                    <Text style={styles.routeDetailsText}>{totalMinutes ? totalMinutes.toFixed(1) : 'Loading...'} min</Text>
                     <FontAwesome
                         name="shopping-bag"
                         size={30}
                         color="#3FC060"
                         style={{ marginHorizontal: 10 }}
                     />
-                    <Text style={styles.routeDetailsText}>{totalKm.toFixed(3)} km</Text>
+                    <Text style={styles.routeDetailsText}>{totalKm ? totalKm.toFixed(3) : 0} km</Text>
                 </View>
 
                 <View style={styles.deliveryDetailsContainer}>
