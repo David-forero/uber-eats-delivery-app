@@ -62,7 +62,7 @@ const OrdersScreen = () => {
                     </Marker>
                 ))}
             </MapView>
-            <BottomSheet ref={bottomSheetRef} snapPoints={snapPoints}>
+            <BottomSheet index={1} ref={bottomSheetRef} snapPoints={snapPoints}>
                 <View style={{ marginBottom: 30, alignItems: "center" }}>
                     <Text style={{ fontSize: 20, fontWeight: '600', letterSpacing: 0.5, paddingBottom: 5 }}>You're Online</Text>
                     <Text style={{ letterSpacing: 0.5, color: 'gray' }}>Available Orders:</Text>
