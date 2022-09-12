@@ -9,7 +9,8 @@ export enum OrderStatus {
   NEW = "NEW",
   COOKING = "COOKING",
   READY_FOR_PICKUP = "READY_FOR_PICKUP",
-  COMPLETED = "COMPLETED"
+  COMPLETED = "COMPLETED",
+  ACCEPTED = "ACCEPTED"
 }
 
 
@@ -50,8 +51,8 @@ export declare class Courier {
   readonly id: string;
   readonly name: string;
   readonly sub: string;
-  readonly lat: number;
-  readonly lng: number;
+  readonly lat?: number | null;
+  readonly lng?: number | null;
   readonly transportationMode?: TransportationModes | keyof typeof TransportationModes | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -109,7 +110,7 @@ export declare class OrderDish {
 
 export declare class Order {
   readonly id: string;
-  readonly userID: string;
+  readonly userID?: string | null;
   readonly Restaurant?: Restaurant | null;
   readonly total?: number | null;
   readonly status: OrderStatus | keyof typeof OrderStatus;

@@ -7,8 +7,8 @@ type Courier @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   sub: String!
-  lat: Float!
-  lng: Float!
+  lat: Float
+  lng: Float
   transportationMode: TransportationModes
 }
 
@@ -24,6 +24,7 @@ enum OrderStatus {
   COOKING
   READY_FOR_PICKUP
   COMPLETED
+  ACCEPTED
 }
 
 type OrderDish @model @auth(rules: [{allow: public}]) {
@@ -35,7 +36,7 @@ type OrderDish @model @auth(rules: [{allow: public}]) {
 
 type Order @model @auth(rules: [{allow: public}]) {
   id: ID!
-  userID: ID! @index(name: "byUser")
+  userID: ID @index(name: "byUser")
   Restaurant: Restaurant @hasOne
   total: Float
   status: OrderStatus!

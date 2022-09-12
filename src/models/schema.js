@@ -28,14 +28,14 @@ export const schema = {
                     "name": "lat",
                     "isArray": false,
                     "type": "Float",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "lng": {
                     "name": "lng",
                     "isArray": false,
                     "type": "Float",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "transportationMode": {
@@ -489,7 +489,7 @@ export const schema = {
                     "name": "userID",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "Restaurant": {
@@ -888,10 +888,11 @@ export const schema = {
                 "NEW",
                 "COOKING",
                 "READY_FOR_PICKUP",
-                "COMPLETED"
+                "COMPLETED",
+                "ACCEPTED"
             ]
         }
     },
     "nonModels": {},
-    "version": "32d33c3b8b3b9938617faa4c08590cfd"
+    "version": "6c37e113bcae61296a55c8c8065e0f34"
 };
