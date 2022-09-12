@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Auth, DataStore } from "aws-amplify";
 import { Courier, TransportationModes } from "../../models";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
 
